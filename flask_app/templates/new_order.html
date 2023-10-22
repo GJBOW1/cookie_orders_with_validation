@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Add Order</title>
+</head>
+<body>
+    <div class="header_log">
+        <div class="log">
+            <h1>Log a New Order</h1>
+        </div>
+        <div class="back">
+            <a href="/" class="href">Back to Purchases</a>
+        </div>
+    </div>
+    <hr>
+    <form action="/add/order" method="POST">
+        <div class="form_container">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="name">
+                <label for="name">Name: </label>
+                <input type="text" name="name" placeholder="Enter your name here...">
+            </div>
+            <div class="type">
+                <label for="cookie_type">Cookie Type: </label>
+                <input type="text" name="cookie_type" placeholder="Enter cookie type here...">
+            </div>
+            <div class="quantities">
+                <label for="quantity">Number of Boxes: </label>
+                <input type="number" name="quantity" placeholder="Enter number of desired boxes here...">
+            </div>
+            <div class="log_order">
+                <input type="submit" value="Log Order">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

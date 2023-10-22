@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Home</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Cookie Orders</h1>
+    </div>
+    <div class="list_orders">
+        <div class="all_orders">
+            <h2>All Orders</h2>
+        </div>
+        <div class="add_order">
+            <a href="/new/order" class="href">New Order</a>
+        </div>
+    </div>
+    <div class="order_container">
+        <div class="customer_name">
+            <h2>Customer Name</h2>
+            {% for order in orders %}
+                <div class="display">
+                    {{order.name}}
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="cookie_type">
+            <h2>Cookie Type</h2>
+            {% for order in orders %}
+                <div class="display">
+                    {{order.cookie_type}}
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="quantity">
+            <h2>Number of Boxes</h2>
+            {% for order in orders %}
+                <div class="display">
+                    {{order.quantity}}
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="actions">
+            <h2>Actions</h2>
+        {% for order in orders %}
+        <div class="display_hrefs">
+            <a href="/change/order/{{order.id}}">edit</a>
+            <a href="/delete/order/{{order.id}}">delete</a>
+        </div>
+        <hr>
+        {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
